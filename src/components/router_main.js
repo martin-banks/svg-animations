@@ -7,6 +7,7 @@ import Sidebar from './router_sidebar'
 import ViewHome from '../views/home'
 import SvgRotatingCircles from './svg/rotating-circles/'
 import SvgDrawPath from './svg/draw-path/'
+import SvgMarchingAnts from './svg/marching-ants/'
 
 const Label = Styled.span`
   display: block;
@@ -48,6 +49,11 @@ class AppRouter extends Component {
                   <Label>Draw path</Label>
                 </Link>
               </li>
+              <li>
+                <Link to="/marching-ants">
+                  <Label>Marching ants</Label>
+                </Link>
+              </li>
 
             </Ul>
           </nav>
@@ -68,6 +74,11 @@ class AppRouter extends Component {
           path="/draw-path"
           exact 
           component={ SvgDrawPath }
+        />
+        <Route
+          path="/marching-ants"
+          exact 
+          component={ SvgMarchingAnts }
         />
       </Router>
     )
