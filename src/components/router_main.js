@@ -8,6 +8,7 @@ import ViewHome from '../views/home'
 import SvgRotatingCircles from './svg/rotating-circles/'
 import SvgDrawPath from './svg/draw-path/'
 import SvgMarchingAnts from './svg/marching-ants/'
+import SvgWeatherLightening from './svg/weather-lightening/'
 
 const Label = Styled.span`
   display: block;
@@ -40,19 +41,16 @@ class AppRouter extends Component {
               <hr/>
 
               <li>
-                <Link to="/rotating-circles">
-                  <Label>Rotating circles</Label>
-                </Link>
+                <Link to="/rotating-circles"><Label>Rotating circles</Label></Link>
               </li>
               <li>
-                <Link to="/draw-path">
-                  <Label>Draw path</Label>
-                </Link>
+                <Link to="/draw-path"><Label>Draw path</Label>  </Link>
               </li>
               <li>
-                <Link to="/marching-ants">
-                  <Label>Marching ants</Label>
-                </Link>
+                <Link to="/marching-ants"><Label>Marching ants</Label></Link>
+              </li>
+              <li>
+                <Link to="/weather-lightening"><Label>Weather: lightening</Label></Link>
               </li>
 
             </Ul>
@@ -79,6 +77,11 @@ class AppRouter extends Component {
           path="/marching-ants"
           exact 
           component={ SvgMarchingAnts }
+        />
+        <Route
+          path="/weather-lightening"
+          exact 
+          component={ SvgWeatherLightening }
         />
       </Router>
     )
