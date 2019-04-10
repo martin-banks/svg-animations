@@ -3,24 +3,26 @@ import Styled, { keyframes } from 'styled-components'
 
 const drawPath = keyframes`
   0% {
-    /* transform: scale(1); */
+    transform: scale(0.8);
     fill: rgba(100, 200, 200, 0);
     stroke: rgba(100, 200, 200, 1);
     stroke-dashoffset: 1600;
   }
   
-  40% {
-    /* transform: scale(1); */
+  50% {
+    transform: scale(1);
     fill: rgba(100, 200, 200, 0.1);
     stroke: rgba(100, 200, 200, 1);
     stroke-dashoffset: 0;
   }
-  50% {
+  60% {
+    transform: scale(1);
     fill: rgba(100, 200, 200, 1);
     stroke: rgba(100, 200, 200, 0);
     stroke-dashoffset: 0;
   }
   100% {
+    transform: scale(1);
     fill: rgba(100, 200, 200, 1);
     stroke: rgba(100, 200, 200, 0);
     stroke-dashoffset: 0;
@@ -28,21 +30,11 @@ const drawPath = keyframes`
 `
 
 
-
-// const Svg = Styled.svg`
-//   position: relative
-//   width: 800px;
-//   left: 50%;
-//   transform: translate(-50%, 0);
-//   fill: none;
-//   `
 const Path = Styled.path`
-  /* fill: none; */
+  transform-origin: center;
   stroke-width: 3px;
-  /* stroke: #333; */
   stroke-dasharray: 1600 ;
-  /* stroke-dashoffset: 1000; */
-  animation: ${drawPath} 12s infinite linear;
+  animation: ${drawPath} 10s infinite linear;
 `
 
 export default class extends Component {
