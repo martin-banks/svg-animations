@@ -9,6 +9,7 @@ import SvgRotatingCircles from './svg/rotating-circles/'
 import SvgDrawPath from './svg/draw-path/'
 import SvgMarchingAnts from './svg/marching-ants/'
 import SvgWeatherLightening from './svg/weather-lightening/'
+import SvgAnimatedWord from './svg/animated-word/'
 
 const Label = Styled.span`
   display: block;
@@ -52,6 +53,9 @@ class AppRouter extends Component {
               <li>
                 <Link to="/weather-lightening"><Label>Weather: lightening</Label></Link>
               </li>
+              <li>
+                <Link to="/animated-word"><Label>Animated word</Label></Link>
+              </li>
 
             </Ul>
           </nav>
@@ -82,6 +86,11 @@ class AppRouter extends Component {
           path="/weather-lightening"
           exact 
           component={ SvgWeatherLightening }
+        />
+        <Route
+          path="/animated-word"
+          exact 
+          component={ SvgAnimatedWord }
         />
       </Router>
     )
