@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import Styled, { keyframes } from 'styled-components'
+import Markdown from 'react-markdown'
+
+import Header from '../../header.js'
+
+import notes from './notes.md'
 
 const Svg = Styled.svg`
   position: relative
@@ -38,27 +43,39 @@ export default class extends Component {
     this.refCircle = React.createRef()
     this.state = {
       circleLength: 1000,
+      notse: 'nope'
     }
   }
 
   componentDidMount () {
     this.setState({ circleLength: this.refCircle.current.getTotalLength() })
+    fetch(notes)
+      .then(response => response.text())
+      .then(md => {
+        this.setState({ notes: md })
+      })
   }
   render () {
     return (
       <div>
-        <Svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 300 300"
-        >
-          <Circle
-            ref={ this.refCircle }
-            cx="150"
-            cy="150"
-            r="150"
-            circleLength={ this.state.circleLength }
-          />
-        </Svg>
+        <Header>
+          <Svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 300 300"
+          >
+            <Circle
+              ref={ this.refCircle }
+              cx="150"
+              cy="150"
+              r="150"
+              circleLength={ this.state.circleLength }
+            />
+          </Svg>
+        </Header>
+
+        <Markdown
+          source={ this.state.notes }
+        />
 
       </div>
     )
