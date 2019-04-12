@@ -1,8 +1,9 @@
-# Animate drawing paths
+# # Animate path
 
 Animating a path drawing in uses a very simple trick; use a dashed line!
 
-Using a dash space taht is longer than the total path length then gradually reuce that space creates the illusion of the path drawing itself. 
+Using a dash space that is longer than the total path length then gradually reduce that space creates the illusion of the path drawing itself.
+
 
 ## How to guide
 
@@ -24,7 +25,7 @@ For this demo; create a simple circle
 
 Now set up a css animation
 
-``` css
+```css
 @keyframes drawPath {
   0% {
     stroke-dashoffset: 1000;
@@ -47,10 +48,3 @@ Then add that animation to your circle element
   animation: drawPath linear 5s infinite;
 }
 ```
-
-
-
-
-
-
-
