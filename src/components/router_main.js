@@ -30,6 +30,14 @@ const Ul = Styled.ul`
   padding-top: 2rem;
 `
 
+const ViewWrapper = Styled.section`
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  max-width: 1000px;
+`
+
 class AppRouter extends Component {
 
   render () {
@@ -69,46 +77,49 @@ class AppRouter extends Component {
         </Sidebar>
 
         {/* Defines components to render for each route */}
-        <Route
-          path="/"
-          exact
-          component={ ViewHome }
-        />
-        <Route
-          path="/rotating-circles"
-          exact
-          component={ SvgRotatingCircles }
-        />
-        <Route
-          path="/draw-path"
-          exact 
-          component={ SvgDrawPath }
-        />
-        <Route
-          path="/marching-ants"
-          exact 
-          component={ SvgMarchingAnts }
-        />
-        <Route
-          path="/weather-lightening"
-          exact 
-          component={ SvgWeatherLightening }
-        />
-        <Route
-          path="/animated-word"
-          exact 
-          component={ SvgAnimatedWord }
-        />
-        <Route
-          path="/weather-rainbow"
-          exact 
-          component={ SvgRainbow }
-        />
-        <Route
-          path="/weather-snow"
-          exact 
-          component={ SvgSnow }
-        />
+
+        <ViewWrapper>
+          <Route
+            path="/"
+            exact
+            component={ ViewHome }
+          />
+          <Route
+            path="/rotating-circles"
+            exact
+            component={ SvgRotatingCircles }
+          />
+          <Route
+            path="/draw-path"
+            exact 
+            component={ SvgDrawPath }
+          />
+          <Route
+            path="/marching-ants"
+            exact 
+            component={ SvgMarchingAnts }
+          />
+          <Route
+            path="/weather-lightening"
+            exact 
+            component={ SvgWeatherLightening }
+          />
+          <Route
+            path="/animated-word"
+            exact 
+            component={ SvgAnimatedWord }
+          />
+          <Route
+            path="/weather-rainbow"
+            exact 
+            component={ SvgRainbow }
+          />
+          <Route
+            path="/weather-snow"
+            exact 
+            component={ SvgSnow }
+          />
+        </ViewWrapper>
       </Router>
     )
   }
