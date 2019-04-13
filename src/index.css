@@ -15,7 +15,7 @@ code {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 6rem;
   margin: 0;
   margin-bottom: 4rem;
 }
@@ -71,8 +71,16 @@ svg {
 
 pre {
   background: #333;
-  color: white;
+  color: #e2e2e2;
+  font-family: 'Fira Code', monospace;
   padding: 2rem;
+  border-radius: 4px;
+  margin: 3rem 0;
+  overflow: auto;
+}
+
+code {
+  font-family: 'Fira Code', monospace;
 }
 
 
