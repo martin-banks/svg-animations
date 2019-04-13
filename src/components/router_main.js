@@ -10,6 +10,8 @@ import SvgDrawPath from './svg/draw-path/'
 import SvgMarchingAnts from './svg/marching-ants/'
 import SvgWeatherLightening from './svg/weather-lightening/'
 import SvgAnimatedWord from './svg/animated-word/'
+import SvgRainbow from './svg/weather-rainbow/'
+import SvgSnow from './svg/weather-snow/'
 
 const Label = Styled.span`
   display: block;
@@ -37,8 +39,7 @@ class AppRouter extends Component {
           <nav>
             <Ul>
               <li>
-                <Link to="/">
-                  <Label>Home</Label></Link></li>
+                <Link to="/"><Label>Home</Label></Link></li>
               <hr/>
 
               <li>
@@ -51,10 +52,16 @@ class AppRouter extends Component {
                 <Link to="/marching-ants"><Label>Marching ants</Label></Link>
               </li>
               <li>
+                <Link to="/animated-word"><Label>Animated word</Label></Link>
+              </li>
+              <li>
                 <Link to="/weather-lightening"><Label>Weather: lightening</Label></Link>
               </li>
               <li>
-                <Link to="/animated-word"><Label>Animated word</Label></Link>
+                <Link to="/weather-rainbow"><Label>Weather: rainbow</Label></Link>
+              </li>
+              <li>
+                <Link to="/weather-snow"><Label>Weather: snow</Label></Link>
               </li>
 
             </Ul>
@@ -91,6 +98,16 @@ class AppRouter extends Component {
           path="/animated-word"
           exact 
           component={ SvgAnimatedWord }
+        />
+        <Route
+          path="/weather-rainbow"
+          exact 
+          component={ SvgRainbow }
+        />
+        <Route
+          path="/weather-snow"
+          exact 
+          component={ SvgSnow }
         />
       </Router>
     )
