@@ -1,4 +1,4 @@
-# # Animate path
+# Animate path
 
 Animating a path drawing in uses a very simple trick; use a dashed line!
 
