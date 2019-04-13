@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Styled, { keyframes } from 'styled-components'
-// import style from './index.css'
+import Markdown from 'react-markdown'
+
+import notes from './notes.md'
 
 const spinner = keyframes`
   0% {
@@ -27,10 +29,6 @@ const Circle = Styled.circle`
   animation: ${spinner} 7s ease-in-out infinite alternate ${p => 3 + (p.index * 0.06)}s;
 `
 
-const Core = Styled(Circle)`
-  fill: navy;
-`
-
 const Wrapper = Styled.div`
   backface-visibility: hidden;
   tranzsform-style: preserve-3d;
@@ -39,30 +37,45 @@ const Wrapper = Styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  margin-bottom: 3rem;
 `
 
-
 class RotatingCircles extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      notes: 'Loading...'
+    }
+  }
+  componentDidMount () {
+    fetch(notes)
+      .then(res => res.text())
+      .then(notes => this.setState({ notes }))
+      .catch(console.error)
+  }
   render () {
     return (
-      <Wrapper>
-        <Svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 300 300"
-        >
-          {
-            [...new Array(30)].
-              map((x, i) => <Circle
-                key={ `circle-${i}` }
-                cx="150"
-                cy="150"
-                r={ 150 - (5 * i) }
-                index={ i }
-              />)
-          }
-        </Svg>
-      </Wrapper>
+      <div>
+        <Wrapper>
+          <Svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 300 300"
+          >
+            {
+              [...new Array(30)].
+                map((x, i) => <Circle
+                  key={ `circle-${i}` }
+                  cx="150"
+                  cy="150"
+                  r={ 150 - (5 * i) }
+                  index={ i }
+                />)
+            }
+          </Svg>
+        </Wrapper>
+        
+        <Markdown source={ this.state.notes } />
+      </div>
     )
   }
 }
