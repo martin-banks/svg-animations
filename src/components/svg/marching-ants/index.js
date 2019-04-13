@@ -25,60 +25,40 @@ function drawPath (pathLength, rotation) {
 `
 }
 
-const Circle = Styled.circle`
+const Rect = Styled.rect`
+  position: relative;
   fill: none;
   stroke-width: 10px;
-  stroke-dasharray: ${p => p.circleLength};
-  animation: ${p => drawPath(p.circleLength, p.rotation)} linear 5s infinite;
+  stroke-dasharray: ${p => p.length};
+  animation: ${p => drawPath(p.length, p.rotation)} linear 5s infinite;
+`
+
+const Rect_1 = Styled(Rect)``
+
+const Rect_2 = Styled(Rect)`
+  transform: translate(50px, 50px);
 `
 
 export default class extends Component {
   constructor (props) {
     super(props)
-    this.refCircle = React.createRef()
-    this.refCircle_2 = React.createRef()
+    this.refRect = React.createRef()
+    this.refRect_2 = React.createRef()
     this.state = {
-      circleLength: 0,
-      dynamicLength: 0,
       lengthMin: 0,
       lengthMax: 0,
       modifier: 1,
     }
-
-    // this.updateCircleLength = this.updateCircleLength.bind(this)
   }
 
-  // updateCircleLength () {
-  //   const { circleLength, dynamicLength, lengthMin, lengthMax, modifier } = this.state
-  //   let newDynaimcLength = dynamicLength
-  //   let newModifier = modifier
-  //   if (modifier === 1 && dynamicLength > (lengthMax - 10)) {
-  //     newModifier = -1
-  //   } else if (modifier === -1 && dynamicLength < (lengthMin + 10)) {
-  //     newModifier = 1
-  //   } else {
-  //     newModifier = modifier
-  //   }
-  //   newDynaimcLength += (1 * newModifier)
-
-  //   this.setState({
-  //     modifier: newModifier,
-  //     dynamicLength: newDynaimcLength
-  //   })
-  //   window.requestAnimationFrame(this.updateCircleLength)
-  // }
 
   componentDidMount () {
-    const pathLength = this.refCircle.current.getTotalLength()
-    const pathLength_2 = this.refCircle_2.current.getTotalLength()
+    const pathLength = this.refRect.current.getTotalLength()
+    const pathLength_2 = this.refRect_2.current.getTotalLength()
     this.setState({
-      circleLength: pathLength,
-      circleLength_2: pathLength_2,
-      dynamicLength: pathLength / 10,
-      lengthMax: pathLength / 10,
-      lengthMin: pathLength / 25,
+      pathLength,
+      pathLength_2,
     })
-    // this.updateCircleLength()
   }
   render () {
     return (
@@ -87,21 +67,19 @@ export default class extends Component {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 300 300"
         >
-          <Circle
-            ref={ this.refCircle }
-            cx="150"
-            cy="150"
-            r="150"
+          <Rect_1
+            ref={ this.refRect }
             rotation="1"
-            circleLength={ this.state.circleLength / 10 }
+            width="400"
+            height="400"
+            length={ this.state.pathLength / 10 }
           />
-          <Circle
-            ref={ this.refCircle_2 }
-            cx="150"
-            cy="150"
-            r="100"
+          <Rect_2
+            ref={ this.refRect_2 }
             rotation="-3"
-            circleLength={ this.state.circleLength_2 / 6 }
+            width="300"
+            height="300"
+            length={ this.state.pathLength_2 / 6 }
           />
         </Svg>
 

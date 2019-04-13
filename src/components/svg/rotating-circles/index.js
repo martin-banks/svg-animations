@@ -4,43 +4,37 @@ import Styled, { keyframes } from 'styled-components'
 
 const spinner = keyframes`
   0% {
-    transform: translate3d(0,0,0) rotateX(0) rotateY(0);
+    transform: rotateY(0deg) rotateX(0deg);
   }
   100% {
-    transform: translate3d(0,0,0) rotateX(180deg) rotateY(180deg);
+    transform: rotateY(360deg) rotateX(360deg);
   }
+`
+
+const Svg = Styled.svg`
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  perspective: 300px;
+  width: 30vw;
 `
 
 const Circle = Styled.circle`
   fill: none;
   backface-visibility: none;
   transform-origin: center;
-  `
-
-const Circle_1 = Styled(Circle)`
-  stroke: navy;
-  stroke-width: 30px;
-  animation: ${spinner} 5s linear infinite;
-`
-const Circle_2 = Styled(Circle)`
-  stroke: cornflowerblue;
-  stroke-width: 20px;
-  animation: ${spinner} 3s linear infinite;
-`
-const Circle_3 = Styled(Circle)`
   stroke: lightblue;
-  stroke-width: 10px;
-  animation: ${spinner} 2s linear infinite;
+  stroke-width: 3px;
+  animation: ${spinner} 7s ease-in-out infinite alternate ${p => 3 + (p.index * 0.06)}s;
 `
 
-const Svg = Styled.svg`
-  backface-visibility: hidden;
-  perspective: 180px;
-  width: 30vw;
+const Core = Styled(Circle)`
+  fill: navy;
 `
 
 const Wrapper = Styled.div`
   backface-visibility: hidden;
+  tranzsform-style: preserve-3d;
+  perspective: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,9 +51,16 @@ class RotatingCircles extends Component {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 300 300"
         >
-          <Circle_3 cx="150" cy="150" r="50" />
-          <Circle_2 cx="150" cy="150" r="100" />
-          <Circle_1 cx="150" cy="150" r="150" />
+          {
+            [...new Array(30)].
+              map((x, i) => <Circle
+                key={ `circle-${i}` }
+                cx="150"
+                cy="150"
+                r={ 150 - (5 * i) }
+                index={ i }
+              />)
+          }
         </Svg>
       </Wrapper>
     )
