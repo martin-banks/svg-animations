@@ -4,13 +4,16 @@ import Markdown from 'react-markdown'
 
 import readme from './README.md'
 
+const Demo = Styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  margin-bottom: 4rem;
+  padding: 10rem 0;
+`
+
 const Svg = Styled.svg`
   position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  margin: 0 auto 3rem 0;
-  perspective: 360px;
-
 `
 
 function animations (side) {
@@ -53,18 +56,19 @@ const Rect = Styled.rect`
   /* stroke: red; */
   stroke-width: 10px;
   animation: ${p => animations(p.side)} 15s linear infinite;
-  transform-origin: ${p => {
-    const { side } = p
-    return 'center' // side === 'front' ? 'center' : 'top left'
-  }};
+  transform-origin: center;
+`
+const Text = Styled.text`
+  font-size: 3rem;
+  
 `
 
 const rotateCube = keyframes`
   0% {
-    transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
+    transform: rotateY(0deg) rotateX(0deg);
   }
   100% {
-    transform: rotateY(360deg) rotateX(360deg) rotateZ(360deg);
+    transform: rotateY(360deg) rotateX(-360deg);
   }
 `
 const animateFront = keyframes`
@@ -83,6 +87,9 @@ const Wrapper = Styled.div`
 `
 const Cube = Styled.div`
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   transform-origin: center;
@@ -95,6 +102,7 @@ const Side = Styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
   border: solid 1px;
   background: rgba(0,0,0, 0.2);
   transform-origin: center;
@@ -145,27 +153,31 @@ export default class extends Component {
   render () {
     return (
       <div>
-        <Svg
-          width="200"
-          height="200"
-          viewBox="0 0 200 200"
-        >
-          <Rect width="200" height="200" side="front" />
-          <Rect width="200" height="200" side="left" />
-          <Rect width="200" height="200" side="back" />
-          <Rect width="200" height="200" side="right" />
-        </Svg>
+        <Demo>
+          <Svg
+            width="200"
+            height="200"
+            viewBox="0 0 200 200"
+          >
+            <Rect width="200" height="200" side="front" />
+            <Rect width="200" height="200" side="left" />
+            <Rect width="200" height="200" side="back" />
+            <Rect width="200" height="200" side="right" />
+            <Text>SVG</Text>
+          </Svg>
 
-        <Wrapper>
-          <Cube>
-            <Front />
-            <Left />
-            <Back />
-            <Right />
-            <Top />
-            <Bottom />
-          </Cube>
-        </Wrapper>
+          <Wrapper>
+            <Cube>
+              <h3>HTML</h3>
+              <Front />
+              <Left />
+              <Back />
+              <Right />
+              <Top />
+              <Bottom />
+            </Cube>
+          </Wrapper>
+        </Demo>
 
         <Markdown source={ this.state.readme } />
       </div>
