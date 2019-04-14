@@ -5,6 +5,8 @@ import Styled from 'styled-components'
 import Sidebar from './router_sidebar'
 
 import ViewHome from '../views/home'
+import GettingStarted from '../views/getting-started'
+
 import SvgRotatingCircles from './svg/rotating-circles/'
 import SvgDrawPath from './svg/draw-path/'
 import SvgMarchingAnts from './svg/marching-ants/'
@@ -12,6 +14,8 @@ import SvgWeatherLightening from './svg/weather-lightening/'
 import SvgAnimatedWord from './svg/animated-word/'
 import SvgRainbow from './svg/weather-rainbow/'
 import SvgSnow from './svg/weather-snow/'
+import SvgCube from './svg/cube/'
+import SvgBouncingBall from './svg/bouncing-ball/'
 
 const Label = Styled.span`
   display: block;
@@ -46,8 +50,12 @@ class AppRouter extends Component {
         <Sidebar>
           <nav>
             <Ul>
-              <li>
-                <Link to="/"><Label>Home</Label></Link></li>
+              <li><Link to="/">
+                <Label>Home</Label>
+              </Link></li>
+              <li><Link to="/getting-started">
+                <Label>Getting started</Label>
+              </Link></li>
               <hr/>
 
               <li>
@@ -71,6 +79,12 @@ class AppRouter extends Component {
               <li>
                 <Link to="/weather-snow"><Label>Weather: snow</Label></Link>
               </li>
+              <li>
+                <Link to="/cube"><Label>Cube</Label></Link>
+              </li>
+              <li>
+                <Link to="/bouncing-ball"><Label>Bouncing ball</Label></Link>
+              </li>
 
             </Ul>
           </nav>
@@ -83,6 +97,11 @@ class AppRouter extends Component {
             path="/"
             exact
             component={ ViewHome }
+          />
+          <Route
+            path="/getting-started"
+            exact
+            component={ GettingStarted }
           />
           <Route
             path="/rotating-circles"
@@ -118,6 +137,16 @@ class AppRouter extends Component {
             path="/weather-snow"
             exact 
             component={ SvgSnow }
+          />
+          <Route
+            path="/cube"
+            exact 
+            component={ SvgCube }
+          />
+          <Route
+            path="/bouncing-ball"
+            exact 
+            component={ SvgBouncingBall }
           />
         </ViewWrapper>
       </Router>
