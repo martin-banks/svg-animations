@@ -17,6 +17,7 @@ import SvgSnow from './svg/weather-snow/'
 import SvgCube from './svg/cube/'
 import SvgBouncingBall from './svg/bouncing-ball/'
 import SvgBezier from './svg/bezier/'
+import RouteMap from './svg/route-map/'
 
 
 const Label = Styled.span`
@@ -90,6 +91,9 @@ class AppRouter extends Component {
               <li>
                 <Link to="/bezier-curve"><Label>Bezier cruve</Label></Link>
               </li>
+              <li>
+                <Link to="/route-map"><Label>Route map</Label></Link>
+              </li>
 
             </Ul>
           </nav>
@@ -157,6 +161,11 @@ class AppRouter extends Component {
             path="/bezier-curve"
             exact 
             component={ SvgBezier }
+          />
+          <Route
+            path="/route-map"
+            exact 
+            component={ RouteMap }
           />
         </ViewWrapper>
       </Router>
