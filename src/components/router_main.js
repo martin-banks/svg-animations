@@ -89,7 +89,7 @@ class AppRouter extends Component {
                 <Link to="/bouncing-ball"><Label>Bouncing ball</Label></Link>
               </li>
               <li>
-                <Link to="/bezier-curve"><Label>Bezier cruve</Label></Link>
+                <Link to="/bezier-curve"><Label>Bezier curve</Label></Link>
               </li>
               <li>
                 <Link to="/route-map"><Label>Route map</Label></Link>
